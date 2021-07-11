@@ -77,7 +77,9 @@ class _FoodApp1State extends State<FoodApp1> {
                               backgroundColor: Colors.white,
                               radius: 25,
                               child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Go.pop(context, false);
+                                },
                                 icon: Icon(Icons.search),
                                 iconSize: 23,
                                 color: Colors.black,

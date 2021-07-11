@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.speedcode">
+    package="com.emadhbasri.speedcode_flutter">
    <application
         android:label="speedcode"
         android:icon="@mipmap/ic_launcher">

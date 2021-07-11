@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
@@ -14,38 +13,60 @@ double doubleWidth(double value, {double width: 0}) {
 }
 
 statusSet({
-  Color statusBar = Colors.transparent,
-  Color navigationBar = Colors.white,
-  bool statusBarIconIsWhite=false,
-  bool navigationBarLineIsWhite=false,
+  Color statusBar,
+  Color navigationBar,
+  bool statusBarIconIsWhite,
+  bool navigationBarLineIsWhite,
 }) async {
   try {
-    await FlutterStatusbarcolor.setStatusBarColor(statusBar, animate: true);
-    FlutterStatusbarcolor.setStatusBarWhiteForeground(statusBarIconIsWhite);
-    FlutterStatusbarcolor.setNavigationBarWhiteForeground(navigationBarLineIsWhite);
-    await FlutterStatusbarcolor.setNavigationBarColor(navigationBar,
-        animate: true);
+    if(statusBar!=null)
+      await FlutterStatusbarcolor.setStatusBarColor(statusBar, animate: true);
+    if(statusBarIconIsWhite!=null)
+      FlutterStatusbarcolor.setStatusBarWhiteForeground(statusBarIconIsWhite);
+    if(navigationBar!=null)
+      await FlutterStatusbarcolor.setNavigationBarColor(navigationBar,
+          animate: true);
+    if(navigationBarLineIsWhite!=null)
+      FlutterStatusbarcolor.setNavigationBarWhiteForeground(
+          navigationBarLineIsWhite);
   } catch (e) {
     print(e.toString());
   }
 }
 
 //for navigate between screens
-abstract class Go   {
-
-  static Future<void> push(BuildContext context, Widget page) async{
-    await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => page))
+abstract class Go {
+  static Future<void> push(BuildContext context, Widget page,
+      {bool isModal = false,Duration duration = const Duration(
+          milliseconds: 300
+      )}) async {
+    Route _route;
+    if (isModal)
+      _route = PageRouteBuilder(
+          transitionDuration: duration,
+          opaque: false, pageBuilder: (BuildContext context, _, __) => page);
+    else
+      _route = MaterialPageRoute(builder: (context) => page);
+    await Navigator.push(context, _route)
+        .catchError((e) => print('Error push $e'));
+  }
+  static Future<void> replace(BuildContext context, Widget page,
+      {bool isModal = false,Duration duration = const Duration(
+        milliseconds: 300
+      )}) async {
+    Route _route;
+    if (isModal)
+      _route = PageRouteBuilder(
+        barrierColor: Colors.transparent,
+          transitionDuration: duration,
+          opaque: false, pageBuilder: (BuildContext context, _, __) => page);
+    else
+      _route = MaterialPageRoute(builder: (context) => page);
+    await Navigator.pushReplacement(context, _route)
         .catchError((e) => print('Error push $e'));
   }
 
   static void pop(BuildContext context, dynamic data) {
     Navigator.pop(context, data);
   }
-
 }
-
-
-
