@@ -69,4 +69,27 @@ abstract class Go {
   static void pop(BuildContext context, dynamic data) {
     Navigator.pop(context, data);
   }
+  static Future<dynamic> pushSlideRightAnim(BuildContext context, Widget page,
+      {bool isModal = false, var first, var second}) async{
+    if (first == null) first = Cubic(0.175, 0.885, 0.32, 1.1);
+    if (second == null) second = Curves.easeOutCirc;
+    return await Navigator.push(
+        context,
+        PageRouteBuilder(
+            transitionDuration: Duration(seconds: 1),
+            opaque: !isModal,
+            pageBuilder: (context, Animation<double> animation,
+                Animation<double> secendAnimation) =>page,
+            transitionsBuilder: (context, Animation<double> animation,
+                Animation<double> secendAnimation, Widget widget) {
+              return SlideTransition(
+                position: Tween(begin: Offset(1,0), end: Offset(0, 0))
+                    .animate(CurvedAnimation(
+                    curve: first, //Curves.easeOutBack
+                    parent: animation,
+                    reverseCurve: second)),
+                child: widget,
+              );
+            })).catchError((e) => print('Error 1 $e'));
+  }
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(speedcode LANGUAGES CXX)
+project(speedcode_flutter LANGUAGES CXX)
 
-set(BINARY_NAME "speedcode")
+set(BINARY_NAME "speedcode_flutter")
 
 cmake_policy(SET CMP0063 NEW)
 

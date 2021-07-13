@@ -1,16 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:speedcode/foodApp1/foodApp1.dart';
-import 'package:speedcode/testNav.dart';
-
-// import 'Restaurant Full Animation App/AppState.dart';
-// import 'Restaurant Full Animation App/RestaurantFullAnimationApp1.dart';
+import 'foodApp1/foodApp1.dart';
+import 'foodApp2/foodApp2.dart';
 import 'functions.dart';
-
-final getIt = GetIt.instance;
 void main() {
-  // GetIt.I.registerLazySingleton(() => RestaurantFullAnimationApp1State());
   runApp(MyApp());
 }
 
@@ -55,6 +48,7 @@ class _HomeState extends State<Home> {
           body: ListView(
             children: [
               ListTile(
+                
                 title: Text(
                   'FoodApp1',
                   style: Theme.of(context)
@@ -68,26 +62,22 @@ class _HomeState extends State<Home> {
                       statusBar: Colors.white, statusBarIconIsWhite: false);
                 },
               ),
-              // ListTile(
-              //   title: Text(
-              //     'Restaurant Full Animation App',
-              //     style: Theme.of(context)
-              //         .textTheme
-              //         .headline5
-              //         .copyWith(fontWeight: FontWeight.bold),
-              //   ),
-              //   onTap: () async {
-              //     statusSet(
-              //       statusBar: Colors.transparent,
-              //       statusBarIconIsWhite: false,
-              //     );
-              //     await Go.push(context, RestaurantFullAnimationApp1());
-              //     statusSet(
-              //       statusBar: Colors.white,
-              //       statusBarIconIsWhite: false,
-              //     );
-              //   },
-              // ),
+              ListTile(
+                title: Text(
+                  'FoodApp2',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                onTap: () async {
+                  await statusSet(statusBar: Colors.transparent,
+                      statusBarIconIsWhite: false);
+                  await Go.push(context, FoodApp2());
+                  statusSet(
+                      statusBar: Colors.white, statusBarIconIsWhite: false);
+                },
+              ),
             ],
           ),
         )));

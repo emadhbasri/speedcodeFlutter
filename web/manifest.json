@@ -1,6 +1,6 @@
 {
-    "name": "speedcode",
-    "short_name": "speedcode",
+    "name": "speedcode_flutter",
+    "short_name": "speedcode_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

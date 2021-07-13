@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:speedcode/foodApp1/models.dart';
-import 'package:speedcode/functions.dart';
+import '../foodApp1/models.dart';
+import '../functions.dart';
 import 'data.dart';
 
 class MySlider extends StatefulWidget {

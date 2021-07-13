@@ -1,4 +1,4 @@
-name: speedcode
+name: speedcode_flutter
 description: emad h basri
 
 publish_to: 'none'
@@ -14,9 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_statusbarcolor: ^0.2.3
-#  provider: ^5.0.0
-#  get_it: ^3.0.3
-#  flutter_svg: ^0.22.0
+  flutter_swiper: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -27,4 +25,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/foodApp1/
-#    - assets/images/RestaurantFullAnimationApp1/
+    - assets/images/foodApp2/

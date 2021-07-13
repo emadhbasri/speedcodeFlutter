@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:speedcode/foodApp1/data.dart';
-import 'package:speedcode/functions.dart';
+import '../foodApp1/data.dart';
+import '../functions.dart';
 
 import 'Slider.dart';
 import 'PageSecond.dart';
