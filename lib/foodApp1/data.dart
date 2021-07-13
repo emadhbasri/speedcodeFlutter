@@ -45,15 +45,4 @@ final List<CategoryData> categories = [
   CategoryData('assets/images/foodApp1/burger.png', 'Burgers'),
   CategoryData('assets/images/foodApp1/coffee_cup.png', 'Cafe'),
 
-  CategoryData('assets/images/foodApp1/chicken_leg.png', 'Americans'),
-  CategoryData('assets/images/foodApp1/assian.png', 'Asian'),
-  CategoryData('assets/images/foodApp1/breakfast.png', 'Breakfast'),
-  CategoryData('assets/images/foodApp1/burger.png', 'Burgers'),
-  CategoryData('assets/images/foodApp1/coffee_cup.png', 'Cafe'),
-
-  CategoryData('assets/images/foodApp1/chicken_leg.png', 'Americans'),
-  CategoryData('assets/images/foodApp1/assian.png', 'Asian'),
-  CategoryData('assets/images/foodApp1/breakfast.png', 'Breakfast'),
-  CategoryData('assets/images/foodApp1/burger.png', 'Burgers'),
-  CategoryData('assets/images/foodApp1/coffee_cup.png', 'Cafe'),
 ];
