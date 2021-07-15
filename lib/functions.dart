@@ -65,7 +65,31 @@ abstract class Go {
     await Navigator.pushReplacement(context, _route)
         .catchError((e) => print('Error push $e'));
   }
-
+  static void replaceSlideAnim(BuildContext context, Widget page,
+      {bool full: false, var first, var second}) {
+    if (first == null) first = Cubic(0.175, 0.885, 0.32, 1.1);
+    if (second == null) second = Curves.easeOutCirc;
+    Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+            transitionDuration: Duration(seconds: 1),
+            fullscreenDialog: full,
+            pageBuilder: (context, Animation<double> animation,
+                Animation<double> secendAnimation) {
+              return page;
+            },
+            transitionsBuilder: (context, Animation<double> animation,
+                Animation<double> secendAnimation, Widget widget) {
+              return SlideTransition(
+                position: Tween(begin: Offset(1, 0), end: Offset(0, 0))
+                    .animate(CurvedAnimation(
+                    curve: first, //Curves.easeOutBack
+                    parent: animation,
+                    reverseCurve: second)),
+                child: widget,
+              );
+            })).catchError((e) => print('Error 1 $e'));
+  }
   static void pop(BuildContext context, dynamic data) {
     Navigator.pop(context, data);
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'LoginSignUpAnimation/Pages/LoginPage.dart';
 import 'foodApp1/foodApp1.dart';
 import 'foodApp2/foodApp2.dart';
 import 'functions.dart';
@@ -74,6 +75,22 @@ class _HomeState extends State<Home> {
                   await statusSet(statusBar: Colors.transparent,
                       statusBarIconIsWhite: false);
                   await Go.push(context, FoodApp2());
+                  statusSet(
+                      statusBar: Colors.white, statusBarIconIsWhite: false);
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'LoginSignUpAnimation',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                onTap: () async {
+                  await statusSet(statusBar: Colors.transparent,
+                      statusBarIconIsWhite: false);
+                  await Go.push(context, ProviderLogin());
                   statusSet(
                       statusBar: Colors.white, statusBarIconIsWhite: false);
                 },
