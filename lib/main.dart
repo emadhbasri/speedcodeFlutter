@@ -160,7 +160,8 @@ class _HomeState extends State<Home> {
   }
 
   _pageItemBuilder(UiItems item, int index) {
-    return Opacity(
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 300),
       opacity: _currentIndex != index ? 0.5 : 1,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
