@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'LoginSignUpAnimation/Pages/LoginPage.dart';
+import 'NikeShop/pages/NikeShop.dart';
 import 'foodApp1/foodApp1.dart';
 import 'foodApp2/foodApp2.dart';
 import 'functions.dart';
@@ -59,6 +60,18 @@ class _HomeState extends State<Home> {
     doDefaultStatusBar();
     _list = [
       UiItems(
+          image: ['assets/images/UiItems/LoginSignUpAnimation.gif'],
+          title: 'NikeShop',
+          subtitle: '',
+          page: () async {
+            await statusSet(
+                statusBar: Colors.transparent, statusBarIconIsWhite: false,
+                navigationBar: Colors.white,navigationBarLineIsWhite: false
+            );
+            await Go.push(context, NikeShop());
+            doDefaultStatusBar();
+          }),
+      UiItems(
           image: ['assets/images/UiItems/foodApp1.jpg'],
           title: 'FoodApp1',
           subtitle: '',
@@ -76,7 +89,7 @@ class _HomeState extends State<Home> {
           subtitle: '',
           page: () async {
             await statusSet(
-                statusBar: Colors.transparent, statusBarIconIsWhite: false);
+                statusBar: Colors.transparent, statusBarIconIsWhite: false,navigationBar: Colors.white,navigationBarLineIsWhite: false);
             await Go.push(context, FoodApp2());
             doDefaultStatusBar();
           }),
@@ -86,11 +99,13 @@ class _HomeState extends State<Home> {
           subtitle: '',
           page: () async {
             await statusSet(
-                statusBar: Colors.transparent, statusBarIconIsWhite: false);
+                statusBar: Colors.transparent, statusBarIconIsWhite: false,navigationBar: Colors.white,navigationBarLineIsWhite: false);
             await Go.push(context, ProviderLogin());
             doDefaultStatusBar();
           }),
+
     ];
+    _currentIndex = 999 % _list.length;
     super.initState();
   }
   @override
