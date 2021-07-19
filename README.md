@@ -21,3 +21,8 @@
 [NikeShop](https://github.com/emadhbasri/speedcodeFlutter/tree/master/lib/NikeShop)
 
 ![alt text](https://raw.githubusercontent.com/emadhbasri/speedcodeFlutter/master/lib/NikeShop/NikeShop.gif)
+
+
+[FoodApp 3](https://github.com/emadhbasri/speedcodeFlutter/tree/master/lib/FoodApp3)
+
+![alt text](https://raw.githubusercontent.com/emadhbasri/speedcodeFlutter/master/lib/FoodApp3/FoodApp3.gif)

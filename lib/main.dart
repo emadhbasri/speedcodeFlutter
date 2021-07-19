@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:video_player/video_player.dart';
+import 'FoodApp3/RestaurantHero.dart';
+import 'FoodApp3/RestaurantHeroState.dart';
 import 'LoginSignUpAnimation/Pages/LoginPage.dart';
 import 'NikeShop/pages/NikeShop.dart';
 import 'foodApp1/foodApp1.dart';
 import 'foodApp2/foodApp2.dart';
 import 'functions.dart';
 
+final getIt = GetIt.instance;
 void main() {
+  GetIt.I.registerLazySingleton(() => RestaurantHeroState());
   runApp(MyApp());
 }
 
@@ -48,13 +53,6 @@ class _HomeState extends State<Home> {
       PageController(initialPage: 0, viewportFraction: 0.6);
   int _currentIndex = 0;
   List<UiItems> _list;
-  doDefaultStatusBar() {
-    statusSet(
-        statusBar: Color.fromRGBO(47, 49, 62, 1),
-        statusBarIconIsWhite: true,
-        navigationBar: Color.fromRGBO(47, 49, 62, 1),
-        navigationBarLineIsWhite: true);
-  }
 
   @override
   void initState() {
@@ -65,7 +63,7 @@ class _HomeState extends State<Home> {
               VideoPlayerController.asset('assets/images/UiItems/NikeShop.mp4'),
           title: 'NikeShop',
           subtitle: 'E-commerce design for shopping Clothing.\n'
-          'Using hero, navigation transition controller and NotifyListener.',
+              'Using hero, navigation transition controller and NotifyListener.',
           page: () async {
             await statusSet(
                 statusBar: Colors.transparent,
@@ -89,7 +87,7 @@ class _HomeState extends State<Home> {
               VideoPlayerController.asset('assets/images/UiItems/foodApp2.mp4'),
           title: 'FoodApp2',
           subtitle: 'Design for restaurant menus, offers, info, etc.\n'
-          'Using navigation transition and flutter_swiper package.',
+              'Using navigation transition and flutter_swiper package.',
           page: () async {
             await statusSet(
                 statusBar: Colors.transparent,
@@ -104,7 +102,7 @@ class _HomeState extends State<Home> {
               'assets/images/UiItems/LoginSignUpAnimation.mp4'),
           title: 'LoginSignUpAnimation',
           subtitle: 'Login SignUp Animation.\n'
-          'Using MyAnimatedWidget, provider and IndexedStack.',
+              'Using MyAnimatedWidget, provider and IndexedStack.',
           page: () async {
             await statusSet(
                 statusBar: Colors.transparent,
@@ -113,6 +111,20 @@ class _HomeState extends State<Home> {
                 navigationBarLineIsWhite: false);
             await Go.push(context, ProviderLogin());
             doDefaultStatusBar();
+          }),
+      UiItems(
+          video:
+              VideoPlayerController.asset('assets/images/UiItems/FoodApp3.mp4'),
+          title: 'FoodApp 3',
+          subtitle: 'FullAnimation Design for restaurant.\n'
+              'Using hero for all animation and one Animation Controller for search tab.',
+          page: () async {
+            await statusSet(
+                statusBar: Colors.white,
+                statusBarIconIsWhite: false,
+                navigationBar: Colors.white,
+                navigationBarLineIsWhite: false);
+            await Go.push(context, RestaurantHero());
           }),
     ];
     init();
@@ -123,8 +135,8 @@ class _HomeState extends State<Home> {
     for (int j = 0; j < _list.length; j++) {
       await _list[j].video.initialize();
       await _list[j].video.setLooping(true);
-
     }
+    setState(() {});
   }
 
   @override
@@ -167,11 +179,17 @@ class _HomeState extends State<Home> {
                   .textTheme
                   .headline5
                   .copyWith(color: Colors.white)),
-          Text(_list[_currentIndex].subtitle ?? '',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2
-                  .copyWith(color: Colors.white)),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: doubleHeight(1),
+              horizontal: doubleWidth(7)
+            ),
+            child: Text(_list[_currentIndex].subtitle ?? '',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(color: Colors.white)),
+          ),
           Spacer(),
           ElevatedButton(
               onPressed: () {
@@ -198,11 +216,11 @@ class _HomeState extends State<Home> {
 
   _pageItemBuilder({UiItems item, int index}) {
     print('index $index');
-    for(int j=0;j<_list.length;j++){
-        if(_currentIndex==j)
-          _list[j].video.play();
-        else
-          _list[j].video.pause();
+    for (int j = 0; j < _list.length; j++) {
+      if (_currentIndex == j)
+        _list[j].video.play();
+      else
+        _list[j].video.pause();
     }
     return AnimatedOpacity(
       duration: Duration(milliseconds: 300),
@@ -213,9 +231,9 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(10),
             child: item.video.value.isInitialized
                 ? AspectRatio(
-              aspectRatio: item.video.value.aspectRatio,
-              child: VideoPlayer(item.video),
-            )
+                    aspectRatio: item.video.value.aspectRatio,
+                    child: VideoPlayer(item.video),
+                  )
                 : Container()),
       ),
     );

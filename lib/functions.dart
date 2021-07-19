@@ -11,7 +11,13 @@ double doubleWidth(double value, {double width: 0}) {
   if (width == 0) width = screenSize.width;
   return (width * value) / 100;
 }
-
+doDefaultStatusBar() {
+  statusSet(
+      statusBar: Color.fromRGBO(47, 49, 62, 1),
+      statusBarIconIsWhite: true,
+      navigationBar: Color.fromRGBO(47, 49, 62, 1),
+      navigationBarLineIsWhite: true);
+}
 statusSet({
   Color statusBar,
   Color navigationBar,
@@ -36,6 +42,15 @@ statusSet({
 
 //for navigate between screens
 abstract class Go {
+  static void replaceHero(BuildContext context, Widget newPage,
+      {bool full: false,dur=const Duration(seconds: 1)}) {
+    Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+            transitionDuration: dur,
+            pageBuilder: (_, __, ___) => newPage,
+            fullscreenDialog: full));
+  }
   static Future<void> push(BuildContext context, Widget page,
       {bool isModal = false,Duration duration = const Duration(
           milliseconds: 300
