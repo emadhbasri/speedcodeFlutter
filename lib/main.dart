@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'LoginSignUpAnimation/Pages/LoginPage.dart';
 import 'NikeShop/pages/NikeShop.dart';
 import 'foodApp1/foodApp1.dart';
@@ -11,11 +12,11 @@ void main() {
 }
 
 class UiItems {
-  final List<String> image;
+  final VideoPlayerController video;
   final String title;
   final String subtitle;
   final Function page;
-  const UiItems({this.image, this.title, this.subtitle, this.page});
+  const UiItems({this.video, this.title, this.subtitle, this.page});
 }
 
 class MyApp extends StatelessWidget {
@@ -44,7 +45,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   PageController _controller =
-      PageController(initialPage: 999, viewportFraction: 0.6);
+      PageController(initialPage: 0, viewportFraction: 0.6);
   int _currentIndex = 0;
   List<UiItems> _list;
   doDefaultStatusBar() {
@@ -60,54 +61,72 @@ class _HomeState extends State<Home> {
     doDefaultStatusBar();
     _list = [
       UiItems(
-          image: ['assets/images/UiItems/LoginSignUpAnimation.gif'],
+          video:
+              VideoPlayerController.asset('assets/images/UiItems/NikeShop.mp4'),
           title: 'NikeShop',
-          subtitle: '',
+          subtitle: 'E-commerce design for shopping Clothing.\n'
+          'Using hero, navigation transition controller and NotifyListener.',
           page: () async {
             await statusSet(
-                statusBar: Colors.transparent, statusBarIconIsWhite: false,
-                navigationBar: Colors.white,navigationBarLineIsWhite: false
-            );
+                statusBar: Colors.transparent,
+                statusBarIconIsWhite: false,
+                navigationBar: Colors.white,
+                navigationBarLineIsWhite: false);
             await Go.push(context, NikeShop());
             doDefaultStatusBar();
           }),
       UiItems(
-          image: ['assets/images/UiItems/foodApp1.jpg'],
+          video:
+              VideoPlayerController.asset('assets/images/UiItems/foodApp1.mp4'),
           title: 'FoodApp1',
-          subtitle: '',
+          subtitle: 'Design for restaurant menu.',
           page: () async {
             await Go.push(context, FoodApp1());
             doDefaultStatusBar();
           }),
       UiItems(
-          image: [
-            'assets/images/UiItems/foodApp2_1.jpg',
-            'assets/images/UiItems/foodApp2_2.jpg',
-            'assets/images/UiItems/foodApp2_3.jpg',
-          ],
+          video:
+              VideoPlayerController.asset('assets/images/UiItems/foodApp2.mp4'),
           title: 'FoodApp2',
-          subtitle: '',
+          subtitle: 'Design for restaurant menus, offers, info, etc.\n'
+          'Using navigation transition and flutter_swiper package.',
           page: () async {
             await statusSet(
-                statusBar: Colors.transparent, statusBarIconIsWhite: false,navigationBar: Colors.white,navigationBarLineIsWhite: false);
+                statusBar: Colors.transparent,
+                statusBarIconIsWhite: false,
+                navigationBar: Colors.white,
+                navigationBarLineIsWhite: false);
             await Go.push(context, FoodApp2());
             doDefaultStatusBar();
           }),
       UiItems(
-          image: ['assets/images/UiItems/LoginSignUpAnimation.gif'],
+          video: VideoPlayerController.asset(
+              'assets/images/UiItems/LoginSignUpAnimation.mp4'),
           title: 'LoginSignUpAnimation',
-          subtitle: '',
+          subtitle: 'Login SignUp Animation.\n'
+          'Using MyAnimatedWidget, provider and IndexedStack.',
           page: () async {
             await statusSet(
-                statusBar: Colors.transparent, statusBarIconIsWhite: false,navigationBar: Colors.white,navigationBarLineIsWhite: false);
+                statusBar: Colors.transparent,
+                statusBarIconIsWhite: false,
+                navigationBar: Colors.white,
+                navigationBarLineIsWhite: false);
             await Go.push(context, ProviderLogin());
             doDefaultStatusBar();
           }),
-
     ];
-    _currentIndex = 999 % _list.length;
+    init();
     super.initState();
   }
+
+  init() async {
+    for (int j = 0; j < _list.length; j++) {
+      await _list[j].video.initialize();
+      await _list[j].video.setLooping(true);
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,17 +148,20 @@ class _HomeState extends State<Home> {
               controller: _controller,
               onPageChanged: (index) {
                 setState(() {
-                  _currentIndex = index % _list.length;
+                  _currentIndex = index;
                 });
               },
+              itemCount: _list.length,
               itemBuilder: (context, index) {
                 return _pageItemBuilder(
-                    _list[index % _list.length], index % _list.length);
+                  item: _list[index],
+                  index: index,
+                  // currentIndex: _currentIndex,
+                );
               },
             ),
           ),
           SizedBox(height: doubleHeight(1)),
-
           Text(_list[_currentIndex].title,
               style: Theme.of(context)
                   .textTheme
@@ -174,7 +196,14 @@ class _HomeState extends State<Home> {
     );
   }
 
-  _pageItemBuilder(UiItems item, int index) {
+  _pageItemBuilder({UiItems item, int index}) {
+    print('index $index');
+    for(int j=0;j<_list.length;j++){
+        if(_currentIndex==j)
+          _list[j].video.play();
+        else
+          _list[j].video.pause();
+    }
     return AnimatedOpacity(
       duration: Duration(milliseconds: 300),
       opacity: _currentIndex != index ? 0.5 : 1,
@@ -182,10 +211,12 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              item.image.first,
-              fit: BoxFit.fill,
-            )),
+            child: item.video.value.isInitialized
+                ? AspectRatio(
+              aspectRatio: item.video.value.aspectRatio,
+              child: VideoPlayer(item.video),
+            )
+                : Container()),
       ),
     );
   }
