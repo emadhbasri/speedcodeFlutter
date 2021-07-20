@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:video_player/video_player.dart';
 import 'FoodApp3/RestaurantHero.dart';
 import 'FoodApp3/RestaurantHeroState.dart';
+import 'FullAnimationUiCake/FullAnimationUiCake.dart';
 import 'LoginSignUpAnimation/Pages/LoginPage.dart';
 import 'NikeShop/pages/NikeShop.dart';
 import 'foodApp1/foodApp1.dart';
@@ -125,6 +126,20 @@ class _HomeState extends State<Home> {
                 navigationBar: Colors.white,
                 navigationBarLineIsWhite: false);
             await Go.push(context, RestaurantHero());
+          }),
+      UiItems(
+          video:
+              VideoPlayerController.asset('assets/images/UiItems/FoodApp3.mp4'),
+          title: 'FullAnimationUiCake',
+          subtitle: 'FullAnimationUiCake\n'
+              '',
+          page: () async {
+            await statusSet(
+                statusBar: Colors.white,
+                statusBarIconIsWhite: false,
+                navigationBar: Colors.white,
+                navigationBarLineIsWhite: false);
+            await Go.push(context, FullAnimationUiCake());
           }),
     ];
     init();

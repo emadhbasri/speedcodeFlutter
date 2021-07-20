@@ -4,4 +4,4 @@
 
 Login SignUp Animation.
 
-Using MyAnimatedWidget, provider and IndexedStack.
+Using AnimatedWidget, provider and IndexedStack.

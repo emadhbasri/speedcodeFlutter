@@ -132,3 +132,84 @@ abstract class Go {
             })).catchError((e) => print('Error 1 $e'));
   }
 }
+
+class GestureDetectorVertical extends StatefulWidget {
+  final Function onDown;
+  final Function onTop;
+  final Function onTap;
+  final Widget child;
+  GestureDetectorVertical({Key key, this.onDown, this.onTop, this.child, this.onTap}) : super(key: key);
+
+  @override
+  _GestureDetectorVerticalState createState() => _GestureDetectorVerticalState();
+}
+
+class _GestureDetectorVerticalState extends State<GestureDetectorVertical> {
+  double ds;
+
+  double de;
+
+  bool doIt=false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onVerticalDragUpdate: (DragUpdateDetails e) {
+        de = e.globalPosition.dy;
+        if (ds > de && doIt==false){
+          //top
+          doIt=true;
+          widget.onTop();
+        }else if(ds < de && doIt==false){
+          //down
+          doIt=true;
+          widget.onDown();
+        }
+      },
+      onVerticalDragEnd: (e) async{
+        doIt=false;
+        de=null;
+      },
+      onVerticalDragStart: (DragStartDetails e) {
+        ds = e.globalPosition.dy;
+      },
+      onTap: widget.onTap,
+      child: widget.child,
+    );
+  }
+}
+
+class GestureDetectorHorizontal extends StatefulWidget {
+  final Function onRight;
+  final Function onLeft;
+  final Widget child;
+  const GestureDetectorHorizontal({Key key, this.onRight, this.onLeft, this.child}) : super(key: key);
+  @override
+  _GestureDetectorHorizontalState createState() => _GestureDetectorHorizontalState();
+}
+
+class _GestureDetectorHorizontalState extends State<GestureDetectorHorizontal> {
+  double ds;
+  double de;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onHorizontalDragUpdate: (DragUpdateDetails e) {
+        de = e.globalPosition.dx;
+      },
+      onHorizontalDragEnd: (e) async{
+        if (ds > de)
+          //left
+          widget.onLeft();
+        else
+          //right
+          widget.onRight();
+      },
+      onHorizontalDragStart: (DragStartDetails e) {
+        ds = e.globalPosition.dx;
+      },
+      child: widget.child,
+    );
+  }
+}
+
