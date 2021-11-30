@@ -27,7 +27,7 @@ class CartItem extends StatelessWidget {
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    'assets/images/foodApp1/PageFirst1.jpg'//foodCount.food.image
+                    foodCount.food.image
                     ,fit: BoxFit.fill,)),
             ),
           )),
@@ -39,85 +39,87 @@ class CartItem extends StatelessWidget {
               ),
             ),
           )),
-          Expanded(flex:3,
-              child: Padding(
-                padding: EdgeInsets.only(left: doubleWidth(3),),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(foodCount.food.name,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: doubleWidth(4)
-                      ),
-                    ),
-                    Text('\$${foodCount.food.price}',
-                      style: TextStyle(
-                          color: Colors.pink[100],
-                          fontWeight: FontWeight.bold,
-                          fontSize: doubleWidth(3)
-                      ),
-                    ),
-                  ],
-                ),
-              )),
-          Expanded(flex:3,
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                        onTap: (){
-                          state.removeCartIndex(foodCount: foodCount);
-                        },
-                        child: Icon(Icons.close,color: Colors.white,size: 19)),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      textDirection: TextDirection.rtl,
-                      children: [
-                        Card(
-                          margin: EdgeInsets.zero,
-                          elevation: 0,
-                          color: Colors.pink[100],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7)
-                          ),
-                          child: InkWell(
-                            onTap: (){
-                              state.addCountItem(foodCount: foodCount);
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.all(doubleWidth(0.7)),
-                              child: Icon(Icons.add,color: purple,size: 17,),
-                            ),
-                          ),
+          Expanded(
+            flex: 6,
+            child: Padding(
+              padding: EdgeInsets.only(left: doubleWidth(3),),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(foodCount.food.name,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: doubleWidth(4)
                         ),
-                        SizedBox(width: doubleWidth(3)),
-                        Card(
-                          margin: EdgeInsets.zero,
-                          elevation: 0,
-                          color: Colors.white.withOpacity(0.4),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7)
-                          ),
-                          child: InkWell(
-                            onTap: (){
-                              state.lessCart(foodCount);
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.all(doubleWidth(0.7)),
-                              child: Icon(Icons.remove,color: Colors.white,size: 17,),
+                      ),
+                      GestureDetector(
+                          onTap: (){
+                            state.removeCartIndex(foodCount: foodCount);
+                          },
+                          child: Icon(Icons.close,color: Colors.white,size: 19)),
+
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('\$${foodCount.food.price}',
+                        style: TextStyle(
+                            color: Colors.pink[100],
+                            fontWeight: FontWeight.bold,
+                            fontSize: doubleWidth(3)
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        textDirection: TextDirection.rtl,
+                        children: [
+                          Card(
+                            margin: EdgeInsets.zero,
+                            elevation: 0,
+                            color: Colors.pink[100],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7)
+                            ),
+                            child: InkWell(
+                              onTap: (){
+                                state.addCountItem(foodCount: foodCount);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(doubleWidth(0.7)),
+                                child: Icon(Icons.add,color: purple,size: 17,),
+                              ),
                             ),
                           ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )),
+                          SizedBox(width: doubleWidth(3)),
+                          Card(
+                            margin: EdgeInsets.zero,
+                            elevation: 0,
+                            color: Colors.white.withOpacity(0.4),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7)
+                            ),
+                            child: InkWell(
+                              onTap: (){
+                                state.lessCart(foodCount);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(doubleWidth(0.7)),
+                                child: Icon(Icons.remove,color: Colors.white,size: 17,),
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

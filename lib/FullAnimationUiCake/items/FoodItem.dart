@@ -26,7 +26,7 @@ class FoodItem extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                            image: AssetImage('assets/images/foodApp1/PageFirst1.jpg'),
+                            image: AssetImage(food.image),//assets/images/foodApp1/PageFirst1.jpg
                             fit: BoxFit.fill)),
                   ),
                   SizedBox(width: doubleWidth(3),),

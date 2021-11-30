@@ -57,7 +57,12 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    doDefaultStatusBar();
+    statusSet(
+        statusBar: Colors.white,
+        statusBarIconIsWhite: false,
+        navigationBar: Colors.white,
+        navigationBarLineIsWhite: false);
+    // doDefaultStatusBar();
     _list = [
       UiItems(
           video:
@@ -156,7 +161,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FullAnimationUiCake();
+      Scaffold(
       backgroundColor: Color.fromRGBO(47, 49, 62, 1),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(47, 49, 62, 1),

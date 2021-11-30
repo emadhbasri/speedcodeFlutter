@@ -189,24 +189,29 @@ class _ShopItemState extends State<ShopItem>
                   )),
               Expanded(
                   flex: 2,
-                  child: Container(
-                      padding: EdgeInsets.only(right: doubleWidth(5)),
-                      child: GestureDetector(
-                        onTap: () {
-                          state.likeShop(widget.shop.id, !widget.shop.like);
-                        },
-                        child:
-                        ScaleTransition(
-                          scale: Tween<double>(begin: 0, end: 1).animate(defaultCurv),
-                          child: Icon(
-                            !widget.shop.like
-                                ? CupertinoIcons.suit_heart
-                                : CupertinoIcons.heart_solid,
-                            color: Colors.pink,
-                          ),
-                        ),
+                  child: SizedBox.expand(
+                    child: GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                          padding: EdgeInsets.only(right: doubleWidth(5)),
+                          child: GestureDetector(
+                            onTap: () {
+                              state.likeShop(widget.shop.id, !widget.shop.like);
+                            },
+                            child:
+                            ScaleTransition(
+                              scale: Tween<double>(begin: 0, end: 1).animate(defaultCurv),
+                              child: Icon(
+                                !widget.shop.like
+                                    ? CupertinoIcons.suit_heart
+                                    : CupertinoIcons.heart_solid,
+                                color: Colors.pink,
+                              ),
+                            ),
 
-                      ))),
+                          )),
+                    ),
+                  )),
             ],
           ),
         ),

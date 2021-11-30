@@ -33,7 +33,7 @@ class FoodPage extends StatelessWidget {
                       child: Center(
                           child: Container(
                             height: doubleHeight(33),
-                            child: Image.asset(state.food.image,fit: BoxFit.fill,),
+                            child: Image.asset(state.food.image,),
                           ))),
                   Expanded(
                       child: Column(

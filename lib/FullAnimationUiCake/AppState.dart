@@ -80,8 +80,8 @@ class AppState extends ChangeNotifier{
   }
 
   void likeFood(int id,bool like){
-    int index = foods.indexWhere((e) => e.id==id);
-    foods[index].like=like;
+    int index = listAllFoods.indexWhere((e) => e.id==id);
+    listAllFoods[index].like=like;
     notifyListeners();
   }
 

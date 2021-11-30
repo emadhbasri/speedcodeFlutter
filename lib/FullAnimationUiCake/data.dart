@@ -18,98 +18,93 @@ const Cubic sbs1= Cubic(0.21,0.49,0.59,1.37);
 
 
 List<Shop> allShops = [
-  Shop(1,'assets/images/NikeShop/nike.png', 'Brindle Room',
+  Shop(1,'assets/images/FullAnimationUiCake/shop1.png', 'Brindle Room',
       CategoryType.Desert,'fast-food', '15-20 min', '2.5 km', false, 4.2),
-  Shop(2,'assets/images/NikeShop/nike.png', 'Cupcake Delivery',
+  Shop(2,'assets/images/FullAnimationUiCake/shop2.jpg', 'Cupcake Delivery',
       CategoryType.Desert,'fast-food', '15-20 min', '2.5 km', false, 3.8),
-  Shop(3,'assets/images/NikeShop/nike.png', 'New York Count Co.',
+  Shop(3,'assets/images/FullAnimationUiCake/shop3.png', 'New York Count Co.',
       CategoryType.Desert,'fast-food', '15-20 min', '2.5 km', false, 4.0),
-  Shop(4,'assets/images/NikeShop/nike.png', 'Brindle Room',
+  Shop(4,'assets/images/FullAnimationUiCake/shop4.png', 'Brindle Room',
       CategoryType.Pizza,'fast-food', '15-20 min', '2.5 km', false, 4.2),
-  Shop(5,'assets/images/NikeShop/nike.png', 'Cupcake Delivery',
+  Shop(5,'assets/images/FullAnimationUiCake/shop1.png', 'Cupcake Delivery',
       CategoryType.Pizza,'fast-food', '15-20 min', '2.5 km', false, 3.8),
-  Shop(6,'assets/images/NikeShop/nike.png', 'New York Count Co.',
+  Shop(6,'assets/images/FullAnimationUiCake/shop2.jpg', 'New York Count Co.',
       CategoryType.Pizza,'fast-food', '15-20 min', '2.5 km', false, 4.0),
-  Shop(7,'assets/images/NikeShop/nike.png', 'Brindle Room',
+  Shop(7,'assets/images/FullAnimationUiCake/shop3.png', 'Brindle Room',
       CategoryType.Burgers,'fast-food', '15-20 min', '2.5 km', false, 4.2),
-  Shop(8,'assets/images/NikeShop/nike.png', 'Cupcake Delivery',
+  Shop(8,'assets/images/FullAnimationUiCake/shop4.png', 'Cupcake Delivery',
       CategoryType.Burgers,'fast-food', '15-20 min', '2.5 km', false, 3.8),
-  Shop(9,'assets/images/NikeShop/nike.png', 'New York Count Co.',
+  Shop(9,'assets/images/FullAnimationUiCake/shop1.png', 'New York Count Co.',
       CategoryType.Burgers,'fast-food', '15-20 min', '2.5 km', false, 4.0)
 ];
-List<Food> foods = [
-  Food(id: 0,image: 'assets/images/NikeShop/nike.png',
-    name: 'Honey Milk Donut',category: 'Most popular',price: 9.75,
-    resepi: 'blueberry + sugar + flawour + some ingridients...',
 
-  ),
-  Food(id: 1,image: 'assets/images/NikeShop/nike.png',
-      name: 'Raspberry Donut',category: 'Most popular',price: 12.95,
-      resepi: 'blueberry + sugar + flawour + some ingridients...',
-      desc: 'Naturally & Artificially Flavored\n'
-          'Does not contain real Raspberry',
-      desc1: 'Sed ut perspiciatis unde omnis iste natus error sit\n'
-          'valuptatem accusantium doloremque laudantium',
-      calories: '567 ccal',
-      peope: 1,
-      weight: '400g'
-
-  ),
-  Food(id: 2,image: 'assets/images/NikeShop/nike.png',
-      name: 'Blueberry Donut',category: 'Most popular',price: 5.3,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Most popular',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Most popular',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-
-  Food(id: 0,image: 'assets/images/NikeShop/nike.png',
-      name: 'Honey Milk Donut',category: 'Burgers',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 1,image: 'assets/images/NikeShop/nike.png',
-      name: 'Raspberry Donut',category: 'Burgers',price: 12.95,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 2,image: 'assets/images/NikeShop/nike.png',
-      name: 'Blueberry Donut',category: 'Burgers',price: 5.3,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Burgers',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Burgers',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-
-  Food(id: 0,image: 'assets/images/NikeShop/nike.png',
-      name: 'Honey Milk Donut',category: 'Sandwiches',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 1,image: 'assets/images/NikeShop/nike.png',
-      name: 'Raspberry Donut',category: 'Sandwiches',price: 12.95,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 2,image: 'assets/images/NikeShop/nike.png',
-      name: 'Blueberry Donut',category: 'Sandwiches',price: 5.3,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Sandwiches',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Sandwiches',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-
-  Food(id: 0,image: 'assets/images/NikeShop/nike.png',
-      name: 'Honey Milk Donut',category: 'Salads',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 1,image: 'assets/images/NikeShop/nike.png',
-      name: 'Raspberry Donut',category: 'Salads',price: 12.95,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 2,image: 'assets/images/NikeShop/nike.png',
-      name: 'Blueberry Donut',category: 'Salads',price: 5.3,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Salads',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
-  Food(id: 3,image: 'assets/images/NikeShop/nike.png',
-      name: 'Sugared Donut',category: 'Salads',price: 9.75,
-      resepi: 'blueberry + sugar + flawour + some ingridients...'),
+List<Food> listAllFoods=[
+  ...donuts(),
+  ...iceCreams(),
 ];
+
+List<Food> donuts(){
+  List<String> names=[
+    'Pomegranate',
+    'Chocolate',
+    'Strawberry',
+    'Cherries',
+    'blueberry',
+    'Coffee',
+    'Peach',
+  ];
+  List<Food> listDonuts=[];
+  for(int j=1;j<=7;j++){
+    listDonuts.add(
+        Food(
+            id: j,
+            image: 'assets/images/FullAnimationUiCake/donut$j.png',
+            name: '${names[j-1]} Donut',
+            category: 'Donuts',
+            price: 12.95,
+            resepi: 'blueberry + sugar + flawour + some ingridients...',
+            desc: 'Naturally & Artificially Flavored\n'
+                'Does not contain real Raspberry',
+            desc1: 'Sed ut perspiciatis unde omnis iste natus error sit\n'
+                'valuptatem accusantium doloremque laudantium',
+            calories: '567 ccal',
+            peope: 1,
+            weight: '400g')
+    );
+  }
+  return listDonuts;
+}
+List<Food> iceCreams(){
+  List<String> names=[
+    'icepack',
+    '3 scope ice-cream',
+    'blueberry ice-cream',
+    'double ice-cream',
+    'Chocolate ice-cream',
+    'Watermelon ice-cream',
+    'Strawberry ice-cream',
+  ];
+  List<Food> listIceCreams=[];
+  for(int j=1,k=8;j<=7;j++,k++){
+    listIceCreams.add(
+        Food(
+            id: k,
+            image: 'assets/images/FullAnimationUiCake/ice-cream$j.png',
+            name: '${names[j-1]}',
+            category: 'Ice Creams',
+            price: 12.95,
+            resepi: 'blueberry + sugar + flawour + some ingridients...',
+            desc: 'Naturally & Artificially Flavored\n'
+                'Does not contain real Raspberry',
+            desc1: 'Sed ut perspiciatis unde omnis iste natus error sit\n'
+                'valuptatem accusantium doloremque laudantium',
+            calories: '567 ccal',
+            peope: 1,
+            weight: '400g')
+    );
+  }
+  return listIceCreams;
+}
+
+
+

@@ -34,7 +34,7 @@ import 'CategoryItem.dart';
 //                   Category('All', 'assets/images/FullAnimationUiCake/assiani.png'),
 //                   Category('Burgers', 'assets/images/FullAnimationUiCake/burgeri.png'),
 //                   Category('Pizza', 'assets/images/FullAnimationUiCake/breakfasti.png'),
-//                   Category('Desert', 'assets/images/FullAnimationUiCake/chicken_legi.png')
+//                   Category('Desert', 'assets/images/FullAnimationUiCake/sweetsi1.png')
 //                 ])),
 //           ],
 //         ));
@@ -212,7 +212,7 @@ class _CategoryBarState extends State<CategoryBar>
                   Category('All', 'assets/images/FullAnimationUiCake/assiani.png'),
                   Category('Burgers', 'assets/images/FullAnimationUiCake/burgeri.png'),
                   Category('Pizza', 'assets/images/FullAnimationUiCake/breakfasti.png'),
-                  Category('Desert', 'assets/images/FullAnimationUiCake/chicken_legi.png')
+                  Category('Desert', 'assets/images/FullAnimationUiCake/sweetsi1.png')
                 ], context))
             else
               Stack(
@@ -220,7 +220,7 @@ class _CategoryBarState extends State<CategoryBar>
                     Category('All', 'assets/images/FullAnimationUiCake/assiani.png'),
                     Category('Burgers', 'assets/images/FullAnimationUiCake/burgeri.png'),
                     Category('Pizza', 'assets/images/FullAnimationUiCake/breakfasti.png'),
-                    Category('Desert', 'assets/images/FullAnimationUiCake/chicken_legi.png')
+                    Category('Desert', 'assets/images/FullAnimationUiCake/sweetsi1.png')
                   ])),
             if(!widget.isTemp)
             GestureDetectorHorizontal(

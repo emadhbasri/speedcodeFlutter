@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:speedcode_flutter/FullAnimationUiCake/items/FoodItem.dart';
 import '../AppState.dart';
-import '../items/FoodItem.dart';
 import 'package:speedcode_flutter/functions.dart';
 
 import '../data.dart';
@@ -18,7 +18,7 @@ class _ShopPageState extends State<ShopPage> {
   void initState() {
     statusSet(statusBar: Colors.transparent);
     AppState state = Provider.of<AppState>(context, listen: false);
-    selectedCategory = state.shop.categorysName.first;//todo
+    selectedCategory = state.shop.categorysName.first;
     super.initState();
   }
 
@@ -33,8 +33,6 @@ class _ShopPageState extends State<ShopPage> {
         return false;
       },
       child: Material(
-        // color: Colors.transparent,
-        // backgroundColor: Colors.white,
         child: SizedBox.expand(
           child: Stack(
             children: [
@@ -114,19 +112,23 @@ class _ShopPageState extends State<ShopPage> {
                       ),
                     ),
                   ),
-                  Flexible(
+                  Expanded(
                     child: Container(
                       width: double.maxFinite,
                       child: Builder(
                         builder: (context) {
-                          List<Food> myFood = foods.where((e) => e.category==selectedCategory).toList();
+                          List<Food> myFood=[];
+                          if(selectedCategory=='Most popular')
+                            myFood = listAllFoods.reversed.map((e) => e).toList();
+                          else
+                            myFood = listAllFoods.where((e) => e.category==selectedCategory).toList();
                           return ListView.separated(
                               padding: EdgeInsets.only(bottom: doubleHeight(3)),
                               physics: BouncingScrollPhysics(),
                               itemBuilder: (context, index) =>
                                   GestureDetector(
                                       onTap: (){
-                                        state.food=myFood[1];
+                                        state.food=myFood[index];
                                         state.changePage(PageName.Food);
                                       },
                                       child: Container(child: FoodItem(myFood[index],))),
@@ -317,6 +319,86 @@ class _ShopPageState extends State<ShopPage> {
                             ]),
                         child: child,
                       ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  margin: EdgeInsets.only(top: doubleHeight(3.5)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: doubleWidth(5),
+                      ),
+                      TweenAnimationBuilder(tween: Tween<double>(begin: 0,end: 1),
+                          curve: sbs,
+                          duration: sec1, builder: (context, value, child) =>
+                              Transform.scale(
+                                scale: value,
+                                child: GestureDetector(
+                                  onTap: (){},
+                                  child: Container(
+                                    padding: EdgeInsets.all(doubleWidth(1.5)),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.4),
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.back,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
+                                        Text('Back'),
+                                        SizedBox(width: doubleWidth(1)),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )),
+                      Spacer(),
+                      SizedBox(
+                        width: doubleWidth(1),
+                      ),
+                      GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          padding: EdgeInsets.all(doubleWidth(1.5)),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Icon(
+                            CupertinoIcons.bag,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: doubleWidth(5),
+                      ),
+                      GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          padding: EdgeInsets.all(doubleWidth(1.5)),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Icon(
+                            CupertinoIcons.suit_heart,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: doubleWidth(7),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
